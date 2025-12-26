@@ -1,7 +1,8 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
+import { ThemeProvider } from "@/components/ThemeProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -13,16 +14,21 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+export const viewport: Viewport = {
+  themeColor: "#0a0a0a",
+};
+
 export const metadata: Metadata = {
-  title: "Zied | Full-Stack Developer & GDSC Leader",
-  description: "Portfolio of Zied, a 21-year-old Tunisian developer from Ksar Hellal. Expert in Next.js, React, Supabase, and Arduino. GDSC leader with a passion for SaaS.",
-  keywords: ["Next.js", "React", "Supabase", "Arduino", "GDSC", "Tunisia", "Developer", "Portfolio"],
-  authors: [{ name: "Zied" }],
+  title: "YOUR NAME | Autonomous Tunisian Builder & GDSC Leader",
+  description: "Portfolio of a 21-year-old Tunisian developer from Ksar Hellal. Expert in Next.js, React, Supabase, Arduino, and AI Agents. GDSC leader with a passion for SaaS and innovation.",
+  keywords: ["Next.js", "React", "Supabase", "Arduino", "AI Agents", "GDSC", "Tunisia", "Developer", "Portfolio", "IoT"],
+  authors: [{ name: "YOUR NAME" }],
   openGraph: {
-    title: "Zied | Full-Stack Developer & GDSC Leader",
-    description: "21-year-old Tunisian developer building the future with Next.js, React, and Supabase",
+    title: "YOUR NAME | Autonomous Tunisian Builder & GDSC Leader",
+    description: "21-year-old Tunisian developer building the future with Next.js, React, Supabase, and AI Agents",
     type: "website",
   },
+  manifest: "/manifest.json",
 };
 
 export default function RootLayout({
@@ -31,12 +37,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="en" className="scroll-smooth dark" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Navbar />
-        {children}
+        <ThemeProvider>
+          <Navbar />
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );

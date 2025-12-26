@@ -14,6 +14,17 @@
   --accent-tertiary: #ec4899;
 }
 
+/* Light Mode Variables */
+.light {
+  --background: #f8fafc;
+  --foreground: #0f172a;
+  --gradient-start: #e2e8f0;
+  --gradient-mid: #cbd5e1;
+  --gradient-end: #94a3b8;
+  --glass-bg: rgba(0, 0, 0, 0.03);
+  --glass-border: rgba(0, 0, 0, 0.08);
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -35,6 +46,12 @@ body {
   min-height: 100vh;
 }
 
+/* Light mode body adjustments */
+.light body,
+body:has(html.light) {
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 50%, #cbd5e1 100%);
+}
+
 /* Glassmorphic card styles */
 .glass-card {
   background: var(--glass-bg);
@@ -52,6 +69,19 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 1rem;
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+/* Light mode glass cards */
+.light .glass-card {
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+}
+
+.light .glass-card-strong {
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
 }
 
 /* Gradient text effect */
@@ -119,4 +149,25 @@ body {
 ::selection {
   background: rgba(139, 92, 246, 0.4);
   color: #fff;
+}
+
+/* Light mode text adjustments */
+.light {
+  color: #0f172a;
+}
+
+.light .text-gray-300 {
+  color: #334155;
+}
+
+.light .text-gray-400 {
+  color: #64748b;
+}
+
+.light .text-gray-500 {
+  color: #94a3b8;
+}
+
+.light .text-white {
+  color: #0f172a;
 }

@@ -1,135 +1,201 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
+import { ChevronDownIcon } from "@heroicons/react/24/outline";
+
+// Typewriter hook
+function useTypewriter(text: string, speed: number = 50, delay: number = 1000) {
+    const [displayText, setDisplayText] = useState("");
+    const [isComplete, setIsComplete] = useState(false);
+
+    useEffect(() => {
+        let timeout: NodeJS.Timeout;
+        let index = 0;
+
+        const startTyping = () => {
+            timeout = setTimeout(function type() {
+                if (index < text.length) {
+                    setDisplayText(text.slice(0, index + 1));
+                    index++;
+                    timeout = setTimeout(type, speed);
+                } else {
+                    setIsComplete(true);
+                }
+            }, speed);
+        };
+
+        const initialDelay = setTimeout(startTyping, delay);
+
+        return () => {
+            clearTimeout(timeout);
+            clearTimeout(initialDelay);
+        };
+    }, [text, speed, delay]);
+
+    return { displayText, isComplete };
+}
+
+const badges = [
+    { label: "🏆 IoT Competition Winner", color: "from-amber-500/20 to-orange-500/20", border: "border-amber-500/30" },
+    { label: "💻 Web Dev Since 13", color: "from-indigo-500/20 to-purple-500/20", border: "border-indigo-500/30" },
+];
 
 export default function Hero() {
+    const tagline = "Autonomous Tunisian Builder | GDSC Leader | AI Agents & Web Apps";
+    const { displayText, isComplete } = useTypewriter(tagline, 40, 1200);
+
     return (
-        <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
-            {/* Floating geometric shapes */}
+        <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
+            {/* Subtle Tunisian flag background element */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
+                {/* Red crescent and star subtle overlay */}
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] opacity-[0.03]">
+                    <svg viewBox="0 0 400 400" className="w-full h-full">
+                        {/* Crescent */}
+                        <circle cx="200" cy="200" r="120" fill="#E70013" />
+                        <circle cx="230" cy="200" r="95" fill="#0a0a0a" />
+                        {/* Star */}
+                        <polygon
+                            points="200,120 210,165 258,165 220,195 235,245 200,215 165,245 180,195 142,165 190,165"
+                            fill="#E70013"
+                        />
+                    </svg>
+                </div>
+
+                {/* Floating orbs */}
                 <motion.div
-                    animate={{
-                        rotate: 360,
-                        y: [0, -30, 0]
-                    }}
-                    transition={{
-                        rotate: { duration: 20, repeat: Infinity, ease: "linear" },
-                        y: { duration: 6, repeat: Infinity, ease: "easeInOut" }
-                    }}
-                    className="absolute top-20 right-20 w-72 h-72 bg-gradient-to-br from-indigo-500/20 to-purple-500/20 rounded-full blur-3xl"
+                    animate={{ y: [0, -30, 0], opacity: [0.15, 0.25, 0.15] }}
+                    transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+                    className="absolute top-20 right-10 md:right-20 w-48 md:w-72 h-48 md:h-72 bg-gradient-to-br from-red-500/10 to-rose-500/10 rounded-full blur-3xl"
                 />
                 <motion.div
-                    animate={{
-                        rotate: -360,
-                        y: [0, 30, 0]
-                    }}
-                    transition={{
-                        rotate: { duration: 25, repeat: Infinity, ease: "linear" },
-                        y: { duration: 8, repeat: Infinity, ease: "easeInOut" }
-                    }}
-                    className="absolute bottom-20 left-20 w-96 h-96 bg-gradient-to-br from-purple-500/20 to-pink-500/20 rounded-full blur-3xl"
-                />
-                <motion.div
-                    animate={{ y: [0, -20, 0] }}
-                    transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-                    className="absolute top-1/2 left-1/4 w-4 h-4 bg-indigo-500 rounded-full opacity-60"
-                />
-                <motion.div
-                    animate={{ y: [0, 20, 0] }}
-                    transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                    className="absolute top-1/3 right-1/3 w-3 h-3 bg-purple-500 rounded-full opacity-60"
-                />
-                <motion.div
-                    animate={{ y: [0, -15, 0] }}
-                    transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-                    className="absolute bottom-1/3 right-1/4 w-2 h-2 bg-pink-500 rounded-full opacity-60"
+                    animate={{ y: [0, 20, 0], opacity: [0.1, 0.2, 0.1] }}
+                    transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+                    className="absolute bottom-20 left-10 md:left-20 w-64 md:w-96 h-64 md:h-96 bg-gradient-to-br from-indigo-500/15 to-purple-500/15 rounded-full blur-3xl"
                 />
             </div>
 
-            <div className="container mx-auto px-6 text-center relative z-10">
+            <div className="container mx-auto px-4 sm:px-6 relative z-10 pt-24 pb-20">
+                {/* Main Hero Card - Glassmorphic */}
                 <motion.div
-                    initial={{ opacity: 0, y: 30 }}
+                    initial={{ opacity: 0, y: 40 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6 }}
+                    transition={{ duration: 0.8, ease: "easeOut" }}
+                    className="glass-card-strong p-6 sm:p-10 md:p-14 max-w-3xl mx-auto text-center relative overflow-hidden"
                 >
-                    <motion.p
-                        className="text-indigo-400 text-lg mb-4"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ delay: 0.2 }}
-                    >
-                        👋 Hello, I&apos;m
-                    </motion.p>
+                    {/* Subtle gradient accent */}
+                    <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-red-500/50 to-transparent" />
 
+                    {/* Profile Picture Placeholder */}
+                    <motion.div
+                        initial={{ scale: 0, opacity: 0 }}
+                        animate={{ scale: 1, opacity: 1 }}
+                        transition={{ delay: 0.3, duration: 0.5, type: "spring" }}
+                        className="mx-auto mb-6 sm:mb-8"
+                    >
+                        <div className="w-24 h-24 sm:w-32 sm:h-32 rounded-full bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 p-1 mx-auto">
+                            <div className="w-full h-full rounded-full bg-gray-900 flex items-center justify-center text-3xl sm:text-4xl">
+                                👨‍💻
+                            </div>
+                        </div>
+                    </motion.div>
+
+                    {/* Name */}
                     <motion.h1
-                        className="text-5xl md:text-7xl font-bold mb-6"
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.3 }}
+                        transition={{ delay: 0.5, duration: 0.5 }}
+                        className="text-3xl sm:text-5xl md:text-6xl font-bold mb-4 sm:mb-6"
                     >
-                        <span className="gradient-text">Zied</span>
+                        <span className="gradient-text">YOUR NAME</span>
                     </motion.h1>
 
-                    <motion.h2
-                        className="text-2xl md:text-4xl text-gray-300 mb-8"
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.4 }}
-                    >
-                        Full-Stack Developer & <span className="text-purple-400">GDSC Leader</span>
-                    </motion.h2>
-
-                    <motion.p
-                        className="text-gray-400 text-lg max-w-2xl mx-auto mb-12"
+                    {/* Typewriter Tagline */}
+                    <motion.div
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
-                        transition={{ delay: 0.5 }}
+                        transition={{ delay: 0.8 }}
+                        className="min-h-[60px] sm:min-h-[48px] mb-6 sm:mb-8"
                     >
-                        A 21-year-old passionate developer from Ksar Hellal, Tunisia 🇹🇳
-                        <br />
-                        Building the future with Next.js, React, Supabase & Arduino
-                    </motion.p>
+                        <p className="text-base sm:text-lg md:text-xl text-gray-300 font-light">
+                            {displayText}
+                            {!isComplete && (
+                                <motion.span
+                                    animate={{ opacity: [1, 0] }}
+                                    transition={{ duration: 0.5, repeat: Infinity }}
+                                    className="inline-block w-0.5 h-5 sm:h-6 bg-indigo-400 ml-1 align-middle"
+                                />
+                            )}
+                        </p>
+                    </motion.div>
 
+                    {/* Badges */}
                     <motion.div
-                        className="flex flex-wrap justify-center gap-4"
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.6 }}
+                        transition={{ delay: 1.5, duration: 0.5 }}
+                        className="flex flex-wrap justify-center gap-3 mb-8 sm:mb-10"
+                    >
+                        {badges.map((badge, index) => (
+                            <motion.div
+                                key={badge.label}
+                                initial={{ opacity: 0, scale: 0.8 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                transition={{ delay: 1.7 + index * 0.15 }}
+                                whileHover={{ scale: 1.05, y: -2 }}
+                                className={`px-4 py-2 rounded-full bg-gradient-to-r ${badge.color} border ${badge.border} backdrop-blur-sm`}
+                            >
+                                <span className="text-sm sm:text-base text-white/90">{badge.label}</span>
+                            </motion.div>
+                        ))}
+                    </motion.div>
+
+                    {/* CTA Buttons */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 2, duration: 0.5 }}
+                        className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4"
                     >
                         <motion.a
                             href="#projects"
-                            className="px-8 py-4 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full font-semibold text-white shadow-lg hover:shadow-xl transition-shadow"
-                            whileHover={{ scale: 1.05 }}
-                            whileTap={{ scale: 0.95 }}
+                            whileHover={{ scale: 1.03 }}
+                            whileTap={{ scale: 0.97 }}
+                            className="px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full font-semibold text-white shadow-lg shadow-indigo-500/25 hover:shadow-xl hover:shadow-indigo-500/30 transition-all text-sm sm:text-base"
                         >
                             View My Work
                         </motion.a>
                         <motion.a
                             href="#contact"
-                            className="px-8 py-4 glass-card border border-white/20 rounded-full font-semibold text-white hover:bg-white/10 transition-colors"
-                            whileHover={{ scale: 1.05 }}
-                            whileTap={{ scale: 0.95 }}
+                            whileHover={{ scale: 1.03 }}
+                            whileTap={{ scale: 0.97 }}
+                            className="px-6 sm:px-8 py-3 sm:py-4 bg-white/5 border border-white/20 rounded-full font-semibold text-white hover:bg-white/10 transition-all text-sm sm:text-base"
                         >
                             Get In Touch
                         </motion.a>
                     </motion.div>
                 </motion.div>
 
-                {/* Scroll indicator */}
-                <motion.div
-                    className="absolute bottom-10 left-1/2 transform -translate-x-1/2"
+                {/* Scroll Down Arrow */}
+                <motion.a
+                    href="#about"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
-                    transition={{ delay: 1 }}
+                    transition={{ delay: 2.5 }}
+                    className="absolute bottom-8 left-1/2 -translate-x-1/2 cursor-pointer group"
                 >
                     <motion.div
-                        animate={{ y: [0, 10, 0] }}
-                        transition={{ duration: 1.5, repeat: Infinity }}
-                        className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center pt-2"
+                        animate={{ y: [0, 8, 0] }}
+                        transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+                        className="flex flex-col items-center gap-2"
                     >
-                        <motion.div className="w-1 h-2 bg-white/50 rounded-full" />
+                        <span className="text-xs text-gray-500 uppercase tracking-widest group-hover:text-gray-300 transition-colors">
+                            Scroll
+                        </span>
+                        <ChevronDownIcon className="w-5 h-5 text-gray-500 group-hover:text-indigo-400 transition-colors" />
                     </motion.div>
-                </motion.div>
+                </motion.a>
             </div>
         </section>
     );
