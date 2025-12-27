@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import AnimatedSection from "../AnimatedSection";
-import Image from "next/image";
+import NextImage from "next/image";
 
 const skillCategories = [
     {
@@ -103,7 +103,7 @@ export default function Skills() {
                                                     whileHover={{ scale: 1.2, rotate: 10 }}
                                                     transition={{ type: "spring", stiffness: 300 }}
                                                 >
-                                                    <Image
+                                                    <NextImage
                                                         src={skill.icon}
                                                         alt={skill.name}
                                                         width={24}
@@ -154,7 +154,7 @@ export default function Skills() {
                                 className="px-4 py-2 bg-white/5 rounded-xl flex items-center gap-2 hover:bg-white/10 transition-colors cursor-default"
                             >
                                 <div className="w-5 h-5 relative">
-                                    <Image
+                                    <NextImage
                                         src={skill.icon}
                                         alt={skill.name}
                                         width={20}

@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import AnimatedSection from "../AnimatedSection";
 import GlassCard from "../GlassCard";
 import { ArrowTopRightOnSquareIcon, CodeBracketIcon, StarIcon } from "@heroicons/react/24/outline";
-import Image from "next/image";
+import NextImage from "next/image";
 
 const projects = [
     {
@@ -94,7 +94,7 @@ export default function Projects() {
                                                 className={`w-12 h-12 rounded-xl bg-gradient-to-br ${project.color} flex items-center justify-center p-2`}
                                                 whileHover={{ rotate: 10, scale: 1.1 }}
                                             >
-                                                <Image
+                                                <NextImage
                                                     src={project.icon}
                                                     alt={project.title}
                                                     width={32}

@@ -8,6 +8,8 @@ const nextConfig: NextConfig = {
         hostname: 'cdn.simpleicons.org',
       },
     ],
+    formats: ['image/avif', 'image/webp'],
+    qualities: [75, 95],
   },
 };
 

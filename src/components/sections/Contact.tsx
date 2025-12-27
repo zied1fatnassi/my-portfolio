@@ -11,10 +11,11 @@ import {
     CheckCircleIcon,
     ExclamationCircleIcon
 } from "@heroicons/react/24/outline";
+import NextImage from "next/image";
 
 const socialLinks = [
-    { name: "GitHub", icon: "🐙", url: "https://github.com" },
-    { name: "LinkedIn", icon: "💼", url: "https://linkedin.com" },
+    { name: "GitHub", icon: "https://cdn.simpleicons.org/github/white", url: "https://github.com" },
+    { name: "LinkedIn", icon: "https://cdn.simpleicons.org/linkedin/0A66C2", url: "https://linkedin.com" },
 ];
 
 const languages = [
@@ -252,7 +253,7 @@ export default function Contact() {
                                         className="flex-1 py-3 bg-white/5 border border-white/10 rounded-xl flex items-center justify-center gap-2 hover:bg-white/10 transition-colors"
                                     >
                                         <div className="w-5 h-5 relative">
-                                            <Image
+                                            <NextImage
                                                 src={social.icon}
                                                 alt={social.name}
                                                 width={20}

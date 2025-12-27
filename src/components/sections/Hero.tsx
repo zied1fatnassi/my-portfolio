@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
-import Image from "next/image";
+import NextImage from "next/image";
 
 // Typewriter hook
 function useTypewriter(text: string, speed: number = 50, delay: number = 1000) {
@@ -82,7 +82,7 @@ export default function Hero() {
                     >
                         <div className="w-24 h-24 sm:w-32 sm:h-32 rounded-full bg-gradient-to-br from-cerulean via-air-force-blue to-sky-blue-light p-1 mx-auto">
                             <div className="w-full h-full rounded-full overflow-hidden bg-gray-900">
-                                <Image
+                                <NextImage
                                     src="/profile.jpeg"
                                     alt="Profile Picture"
                                     width={256}
