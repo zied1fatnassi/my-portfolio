@@ -19,17 +19,17 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "YOUR NAME | Autonomous Tunisian Builder & GDSC Leader",
+  title: "ZIED FATNASSI | Autonomous Tunisian Builder & GDSC Leader",
   description: "Portfolio of a 21-year-old Tunisian developer from Ksar Hellal. Expert in Next.js, React, Supabase, Arduino, and AI Agents. GDSC leader with a passion for SaaS and innovation.",
   keywords: ["Next.js", "React", "Supabase", "Arduino", "AI Agents", "GDSC", "Tunisia", "Developer", "Portfolio", "IoT"],
-  authors: [{ name: "YOUR NAME" }],
+  authors: [{ name: "ZIED FATNASSI" }],
   icons: {
     icon: "/avatar.png",
     shortcut: "/avatar.png",
     apple: "/avatar.png",
   },
   openGraph: {
-    title: "YOUR NAME | Autonomous Tunisian Builder & GDSC Leader",
+    title: "ZIED FATNASSI | Autonomous Tunisian Builder & GDSC Leader",
     description: "21-year-old Tunisian developer building the future with Next.js, React, Supabase, and AI Agents",
     type: "website",
   },

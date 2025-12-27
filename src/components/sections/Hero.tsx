@@ -102,7 +102,7 @@ export default function Hero() {
                         transition={{ delay: 0.5, duration: 0.5 }}
                         className="text-3xl sm:text-5xl md:text-6xl font-bold mb-4 sm:mb-6"
                     >
-                        <span className="gradient-text">YOUR NAME</span>
+                        <span className="gradient-text">ZIED FATNASSI</span>
                     </motion.h1>
 
                     {/* Typewriter Tagline */}
