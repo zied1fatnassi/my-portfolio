@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import AnimatedSection from "../AnimatedSection";
 import GlassCard from "../GlassCard";
 import { ArrowTopRightOnSquareIcon, CodeBracketIcon, StarIcon } from "@heroicons/react/24/outline";
+import Image from "next/image";
 
 const projects = [
     {
@@ -11,7 +12,7 @@ const projects = [
         subtitle: "Job Matching Platform",
         description: "A powerful job matching platform connecting companies with candidates. Built as GDSC Lead project with real-time features and smart matching algorithms.",
         tags: ["Next.js", "Supabase", "TypeScript", "Tailwind"],
-        icon: "🎯",
+        icon: "https://cdn.simpleicons.org/nextdotjs/white",
         color: "from-indigo-500 to-purple-500",
         github: "https://github.com",
         live: "https://matchop.vercel.app",
@@ -23,7 +24,7 @@ const projects = [
         subtitle: "Competition Winner 🏆",
         description: "Award-winning IoT solution built with Arduino and ESP32 for a university competition. Features sensor integration and mobile app control.",
         tags: ["Arduino", "ESP32", "React Native", "IoT"],
-        icon: "🔌",
+        icon: "https://cdn.simpleicons.org/arduino/00979D",
         color: "from-amber-500 to-orange-500",
         github: "https://github.com",
         live: null,
@@ -35,7 +36,7 @@ const projects = [
         subtitle: "Freelance Projects",
         description: "Custom AI agents and chatbots built for freelance clients. Automated workflows using n8n, intelligent conversation flows, and business process automation.",
         tags: ["AI Agents", "n8n", "Python", "Automation"],
-        icon: "🤖",
+        icon: "https://cdn.simpleicons.org/openai/412991",
         color: "from-purple-500 to-pink-500",
         github: "https://github.com",
         live: null,
@@ -47,7 +48,7 @@ const projects = [
         subtitle: "Event Manager",
         description: "Event coordination platform for Djerba events. Streamlines event planning, vendor management, and guest coordination for seamless celebrations.",
         tags: ["Next.js", "Supabase", "Tailwind", "PWA"],
-        icon: "🎉",
+        icon: "https://cdn.simpleicons.org/googlecalendar/4285F4",
         color: "from-rose-500 to-pink-500",
         github: "https://github.com",
         live: null,
@@ -90,10 +91,16 @@ export default function Projects() {
                                     <div className="flex items-start justify-between mb-4">
                                         <div className="flex items-center gap-3">
                                             <motion.div
-                                                className={`w-12 h-12 rounded-xl bg-gradient-to-br ${project.color} flex items-center justify-center text-2xl`}
+                                                className={`w-12 h-12 rounded-xl bg-gradient-to-br ${project.color} flex items-center justify-center p-2`}
                                                 whileHover={{ rotate: 10, scale: 1.1 }}
                                             >
-                                                {project.icon}
+                                                <Image
+                                                    src={project.icon}
+                                                    alt={project.title}
+                                                    width={32}
+                                                    height={32}
+                                                    className="object-contain"
+                                                />
                                             </motion.div>
                                             <div>
                                                 <h3 className="text-xl font-bold">{project.title}</h3>

@@ -49,26 +49,21 @@ export default function Contact() {
         e.preventDefault();
         setStatus("sending");
 
-        // EmailJS integration - user needs to add their credentials
         try {
-            // For now, simulate success - user will configure EmailJS
-            await new Promise(resolve => setTimeout(resolve, 1000));
+            const { submitContactMessage } = await import('@/lib/database');
 
-            /* 
-            // Uncomment and configure with your EmailJS credentials:
-            import emailjs from '@emailjs/browser';
-            await emailjs.sendForm(
-              'YOUR_SERVICE_ID',
-              'YOUR_TEMPLATE_ID',
-              formRef.current!,
-              'YOUR_PUBLIC_KEY'
-            );
-            */
+            await submitContactMessage({
+                name: formData.name,
+                email: formData.email,
+                subject: formData.subject,
+                message: formData.message,
+            });
 
             setStatus("success");
             setFormData({ name: "", email: "", subject: "", message: "" });
             setTimeout(() => setStatus("idle"), 5000);
-        } catch {
+        } catch (error) {
+            console.error('Error submitting contact form:', error);
             setStatus("error");
             setTimeout(() => setStatus("idle"), 5000);
         }
@@ -188,10 +183,10 @@ export default function Contact() {
                                     whileHover={{ scale: status !== "sending" ? 1.02 : 1 }}
                                     whileTap={{ scale: status !== "sending" ? 0.98 : 1 }}
                                     className={`w-full py-4 rounded-xl font-semibold text-white shadow-lg flex items-center justify-center gap-2 transition-all ${status === "success"
-                                            ? "bg-green-500"
-                                            : status === "error"
-                                                ? "bg-red-500"
-                                                : "bg-gradient-to-r from-indigo-500 to-purple-500 hover:shadow-xl"
+                                        ? "bg-green-500"
+                                        : status === "error"
+                                            ? "bg-red-500"
+                                            : "bg-gradient-to-r from-indigo-500 to-purple-500 hover:shadow-xl"
                                         }`}
                                 >
                                     {status === "sending" && (
@@ -256,7 +251,15 @@ export default function Contact() {
                                         whileTap={{ scale: 0.95 }}
                                         className="flex-1 py-3 bg-white/5 border border-white/10 rounded-xl flex items-center justify-center gap-2 hover:bg-white/10 transition-colors"
                                     >
-                                        <span className="text-xl">{social.icon}</span>
+                                        <div className="w-5 h-5 relative">
+                                            <Image
+                                                src={social.icon}
+                                                alt={social.name}
+                                                width={20}
+                                                height={20}
+                                                className="object-contain"
+                                            />
+                                        </div>
                                         <span className="text-sm">{social.name}</span>
                                     </motion.a>
                                 ))}

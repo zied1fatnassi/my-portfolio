@@ -2,8 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
-import { Bars3Icon, XMarkIcon, SunIcon, MoonIcon } from "@heroicons/react/24/outline";
-import { useTheme } from "./ThemeProvider";
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 
 const navLinks = [
     { name: "Home", href: "#home" },
@@ -16,7 +15,6 @@ const navLinks = [
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
-    const { theme, toggleTheme } = useTheme();
 
     useEffect(() => {
         const handleScroll = () => {
@@ -56,40 +54,10 @@ export default function Navbar() {
                             <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-indigo-500 to-purple-500 group-hover:w-full transition-all duration-300" />
                         </motion.a>
                     ))}
-
-                    {/* Dark Mode Toggle */}
-                    <motion.button
-                        onClick={toggleTheme}
-                        whileHover={{ scale: 1.1 }}
-                        whileTap={{ scale: 0.9 }}
-                        className="p-2 rounded-full bg-white/5 hover:bg-white/10 transition-colors"
-                        aria-label="Toggle theme"
-                    >
-                        {theme === "dark" ? (
-                            <SunIcon className="w-5 h-5 text-yellow-400" />
-                        ) : (
-                            <MoonIcon className="w-5 h-5 text-indigo-400" />
-                        )}
-                    </motion.button>
                 </div>
 
                 {/* Mobile Menu Button */}
-                <div className="flex items-center gap-3 md:hidden">
-                    {/* Dark Mode Toggle - Mobile */}
-                    <motion.button
-                        onClick={toggleTheme}
-                        whileHover={{ scale: 1.1 }}
-                        whileTap={{ scale: 0.9 }}
-                        className="p-2 rounded-full bg-white/5"
-                        aria-label="Toggle theme"
-                    >
-                        {theme === "dark" ? (
-                            <SunIcon className="w-5 h-5 text-yellow-400" />
-                        ) : (
-                            <MoonIcon className="w-5 h-5 text-indigo-400" />
-                        )}
-                    </motion.button>
-
+                <div className="md:hidden">
                     <button
                         className="text-white p-2"
                         onClick={() => setIsOpen(!isOpen)}

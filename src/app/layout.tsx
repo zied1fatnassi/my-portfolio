@@ -23,6 +23,11 @@ export const metadata: Metadata = {
   description: "Portfolio of a 21-year-old Tunisian developer from Ksar Hellal. Expert in Next.js, React, Supabase, Arduino, and AI Agents. GDSC leader with a passion for SaaS and innovation.",
   keywords: ["Next.js", "React", "Supabase", "Arduino", "AI Agents", "GDSC", "Tunisia", "Developer", "Portfolio", "IoT"],
   authors: [{ name: "YOUR NAME" }],
+  icons: {
+    icon: "/avatar.png",
+    shortcut: "/avatar.png",
+    apple: "/avatar.png",
+  },
   openGraph: {
     title: "YOUR NAME | Autonomous Tunisian Builder & GDSC Leader",
     description: "21-year-old Tunisian developer building the future with Next.js, React, Supabase, and AI Agents",
@@ -40,6 +45,7 @@ export default function RootLayout({
     <html lang="en" className="scroll-smooth dark" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        suppressHydrationWarning
       >
         <ThemeProvider>
           <Navbar />

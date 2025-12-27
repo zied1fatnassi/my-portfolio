@@ -2,45 +2,46 @@
 
 import { motion } from "framer-motion";
 import AnimatedSection from "../AnimatedSection";
+import Image from "next/image";
 
 const skillCategories = [
     {
         name: "Frontend",
         color: "from-cyan-500 to-blue-500",
         skills: [
-            { name: "Next.js", level: 95, icon: "⚡" },
-            { name: "React", level: 92, icon: "⚛️" },
-            { name: "Tailwind CSS", level: 90, icon: "🎨" },
-            { name: "JavaScript", level: 88, icon: "📜" },
+            { name: "Next.js", level: 95, icon: "https://cdn.simpleicons.org/nextdotjs/white" },
+            { name: "React", level: 92, icon: "https://cdn.simpleicons.org/react/61DAFB" },
+            { name: "Tailwind CSS", level: 90, icon: "https://cdn.simpleicons.org/tailwindcss/06B6D4" },
+            { name: "JavaScript", level: 88, icon: "https://cdn.simpleicons.org/javascript/F7DF1E" },
         ],
     },
     {
         name: "Backend",
         color: "from-green-500 to-emerald-500",
         skills: [
-            { name: "Node.js", level: 85, icon: "🟢" },
-            { name: "Supabase", level: 88, icon: "🗄️" },
-            { name: "Symfony", level: 75, icon: "🎵" },
-            { name: "SQL", level: 82, icon: "💾" },
-            { name: "Python", level: 78, icon: "🐍" },
+            { name: "Node.js", level: 85, icon: "https://cdn.simpleicons.org/nodedotjs/339933" },
+            { name: "Supabase", level: 88, icon: "https://cdn.simpleicons.org/supabase/3FCF8E" },
+            { name: "Symfony", level: 75, icon: "https://cdn.simpleicons.org/symfony/000000" },
+            { name: "SQL", level: 82, icon: "https://cdn.simpleicons.org/mysql/4479A1" },
+            { name: "Python", level: 78, icon: "https://cdn.simpleicons.org/python/3776AB" },
         ],
     },
     {
         name: "Hardware & IoT",
         color: "from-amber-500 to-orange-500",
         skills: [
-            { name: "Arduino", level: 88, icon: "🔌" },
-            { name: "ESP32", level: 85, icon: "📡" },
+            { name: "Arduino", level: 88, icon: "https://cdn.simpleicons.org/arduino/00979D" },
+            { name: "ESP32", level: 85, icon: "https://cdn.simpleicons.org/espressif/E7352C" },
         ],
     },
     {
         name: "AI & Tools",
         color: "from-purple-500 to-pink-500",
         skills: [
-            { name: "AI Agents", level: 82, icon: "🤖" },
-            { name: "n8n", level: 80, icon: "⚙️" },
-            { name: "Git", level: 88, icon: "📚" },
-            { name: "Vercel", level: 90, icon: "▲" },
+            { name: "AI Agents", level: 82, icon: "https://cdn.simpleicons.org/openai/412991" },
+            { name: "n8n", level: 80, icon: "https://cdn.simpleicons.org/n8n/EA4B71" },
+            { name: "Git", level: 88, icon: "https://cdn.simpleicons.org/git/F05032" },
+            { name: "Vercel", level: 90, icon: "https://cdn.simpleicons.org/vercel/000000" },
         ],
     },
 ];
@@ -97,13 +98,19 @@ export default function Skills() {
                                     >
                                         <div className="flex items-center justify-between mb-2">
                                             <div className="flex items-center gap-2">
-                                                <motion.span
-                                                    className="text-xl"
+                                                <motion.div
+                                                    className="w-6 h-6 relative"
                                                     whileHover={{ scale: 1.2, rotate: 10 }}
                                                     transition={{ type: "spring", stiffness: 300 }}
                                                 >
-                                                    {skill.icon}
-                                                </motion.span>
+                                                    <Image
+                                                        src={skill.icon}
+                                                        alt={skill.name}
+                                                        width={24}
+                                                        height={24}
+                                                        className="object-contain"
+                                                    />
+                                                </motion.div>
                                                 <span className="text-gray-200 text-sm font-medium">{skill.name}</span>
                                             </div>
                                             <span className="text-gray-400 text-xs">{skill.level}%</span>
@@ -146,7 +153,15 @@ export default function Skills() {
                                 whileHover={{ scale: 1.1, y: -3 }}
                                 className="px-4 py-2 bg-white/5 rounded-xl flex items-center gap-2 hover:bg-white/10 transition-colors cursor-default"
                             >
-                                <span className="text-lg">{skill.icon}</span>
+                                <div className="w-5 h-5 relative">
+                                    <Image
+                                        src={skill.icon}
+                                        alt={skill.name}
+                                        width={20}
+                                        height={20}
+                                        className="object-contain"
+                                    />
+                                </div>
                                 <span className="text-sm text-gray-300">{skill.name}</span>
                             </motion.div>
                         ))}

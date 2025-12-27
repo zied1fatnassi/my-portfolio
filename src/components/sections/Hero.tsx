@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
+import Image from "next/image";
 
 // Typewriter hook
 function useTypewriter(text: string, speed: number = 50, delay: number = 1000) {
@@ -37,8 +38,8 @@ function useTypewriter(text: string, speed: number = 50, delay: number = 1000) {
 }
 
 const badges = [
-    { label: "🏆 IoT Competition Winner", color: "from-amber-500/20 to-orange-500/20", border: "border-amber-500/30" },
-    { label: "💻 Web Dev Since 13", color: "from-indigo-500/20 to-purple-500/20", border: "border-indigo-500/30" },
+    { label: "� Public Speaker & Communicator", color: "from-sky-blue-light/20 to-cerulean/20", border: "border-sky-blue-light/30" },
+    { label: "💻 Web Dev Since 13", color: "from-cerulean/20 to-steel-blue/20", border: "border-cerulean/30" },
 ];
 
 export default function Hero() {
@@ -47,32 +48,17 @@ export default function Hero() {
 
     return (
         <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
-            {/* Subtle Tunisian flag background element */}
+            {/* Floating orbs background */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                {/* Red crescent and star subtle overlay */}
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] opacity-[0.03]">
-                    <svg viewBox="0 0 400 400" className="w-full h-full">
-                        {/* Crescent */}
-                        <circle cx="200" cy="200" r="120" fill="#E70013" />
-                        <circle cx="230" cy="200" r="95" fill="#0a0a0a" />
-                        {/* Star */}
-                        <polygon
-                            points="200,120 210,165 258,165 220,195 235,245 200,215 165,245 180,195 142,165 190,165"
-                            fill="#E70013"
-                        />
-                    </svg>
-                </div>
-
-                {/* Floating orbs */}
                 <motion.div
                     animate={{ y: [0, -30, 0], opacity: [0.15, 0.25, 0.15] }}
                     transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-                    className="absolute top-20 right-10 md:right-20 w-48 md:w-72 h-48 md:h-72 bg-gradient-to-br from-red-500/10 to-rose-500/10 rounded-full blur-3xl"
+                    className="absolute top-20 right-10 md:right-20 w-48 md:w-72 h-48 md:h-72 bg-gradient-to-br from-cerulean/10 to-steel-blue/10 rounded-full blur-3xl"
                 />
                 <motion.div
                     animate={{ y: [0, 20, 0], opacity: [0.1, 0.2, 0.1] }}
                     transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-                    className="absolute bottom-20 left-10 md:left-20 w-64 md:w-96 h-64 md:h-96 bg-gradient-to-br from-indigo-500/15 to-purple-500/15 rounded-full blur-3xl"
+                    className="absolute bottom-20 left-10 md:left-20 w-64 md:w-96 h-64 md:h-96 bg-gradient-to-br from-air-force-blue/15 to-sky-blue-light/15 rounded-full blur-3xl"
                 />
             </div>
 
@@ -85,18 +71,26 @@ export default function Hero() {
                     className="glass-card-strong p-6 sm:p-10 md:p-14 max-w-3xl mx-auto text-center relative overflow-hidden"
                 >
                     {/* Subtle gradient accent */}
-                    <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-red-500/50 to-transparent" />
+                    <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-cerulean/50 to-transparent" />
 
-                    {/* Profile Picture Placeholder */}
+                    {/* Profile Picture */}
                     <motion.div
                         initial={{ scale: 0, opacity: 0 }}
                         animate={{ scale: 1, opacity: 1 }}
                         transition={{ delay: 0.3, duration: 0.5, type: "spring" }}
                         className="mx-auto mb-6 sm:mb-8"
                     >
-                        <div className="w-24 h-24 sm:w-32 sm:h-32 rounded-full bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 p-1 mx-auto">
-                            <div className="w-full h-full rounded-full bg-gray-900 flex items-center justify-center text-3xl sm:text-4xl">
-                                👨‍💻
+                        <div className="w-24 h-24 sm:w-32 sm:h-32 rounded-full bg-gradient-to-br from-cerulean via-air-force-blue to-sky-blue-light p-1 mx-auto">
+                            <div className="w-full h-full rounded-full overflow-hidden bg-gray-900">
+                                <Image
+                                    src="/profile.jpeg"
+                                    alt="Profile Picture"
+                                    width={256}
+                                    height={256}
+                                    className="w-full h-full object-cover"
+                                    priority
+                                    quality={95}
+                                />
                             </div>
                         </div>
                     </motion.div>
@@ -124,7 +118,7 @@ export default function Hero() {
                                 <motion.span
                                     animate={{ opacity: [1, 0] }}
                                     transition={{ duration: 0.5, repeat: Infinity }}
-                                    className="inline-block w-0.5 h-5 sm:h-6 bg-indigo-400 ml-1 align-middle"
+                                    className="inline-block w-0.5 h-5 sm:h-6 bg-sky-blue-light ml-1 align-middle"
                                 />
                             )}
                         </p>
@@ -162,7 +156,7 @@ export default function Hero() {
                             href="#projects"
                             whileHover={{ scale: 1.03 }}
                             whileTap={{ scale: 0.97 }}
-                            className="px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full font-semibold text-white shadow-lg shadow-indigo-500/25 hover:shadow-xl hover:shadow-indigo-500/30 transition-all text-sm sm:text-base"
+                            className="px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-cerulean to-air-force-blue rounded-full font-semibold text-white shadow-lg shadow-cerulean/25 hover:shadow-xl hover:shadow-cerulean/30 transition-all text-sm sm:text-base"
                         >
                             View My Work
                         </motion.a>
@@ -193,7 +187,7 @@ export default function Hero() {
                         <span className="text-xs text-gray-500 uppercase tracking-widest group-hover:text-gray-300 transition-colors">
                             Scroll
                         </span>
-                        <ChevronDownIcon className="w-5 h-5 text-gray-500 group-hover:text-indigo-400 transition-colors" />
+                        <ChevronDownIcon className="w-5 h-5 text-gray-500 group-hover:text-cerulean transition-colors" />
                     </motion.div>
                 </motion.a>
             </div>
