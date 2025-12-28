@@ -47,11 +47,11 @@ export default function Navbar() {
                         <motion.a
                             key={link.name}
                             href={link.href}
-                            className="text-gray-300 hover:text-white transition-colors relative group text-sm"
+                            className="text-gray-600 hover:text-black transition-colors relative group text-sm"
                             whileHover={{ y: -2 }}
                         >
                             {link.name}
-                            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-indigo-500 to-purple-500 group-hover:w-full transition-all duration-300" />
+                            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-gray-400 to-gray-600 group-hover:w-full transition-all duration-300" />
                         </motion.a>
                     ))}
                 </div>
@@ -59,7 +59,7 @@ export default function Navbar() {
                 {/* Mobile Menu Button */}
                 <div className="md:hidden">
                     <button
-                        className="text-white p-2"
+                        className="text-gray-800 p-2"
                         onClick={() => setIsOpen(!isOpen)}
                         aria-label="Toggle menu"
                     >
@@ -79,7 +79,7 @@ export default function Navbar() {
                         <a
                             key={link.name}
                             href={link.href}
-                            className="block py-3 text-gray-300 hover:text-white transition-colors border-b border-white/5 last:border-0"
+                            className="block py-3 text-gray-600 hover:text-black transition-colors border-b border-gray-100 last:border-0"
                             onClick={() => setIsOpen(false)}
                         >
                             {link.name}

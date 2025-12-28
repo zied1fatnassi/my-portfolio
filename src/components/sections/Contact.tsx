@@ -14,8 +14,8 @@ import {
 import NextImage from "next/image";
 
 const socialLinks = [
-    { name: "GitHub", icon: "https://cdn.simpleicons.org/github/white", url: "https://github.com" },
-    { name: "LinkedIn", icon: "https://cdn.simpleicons.org/linkedin/0A66C2", url: "https://linkedin.com" },
+    { name: "GitHub", icon: "https://cdn.simpleicons.org/github/000000", url: "https://github.com/zied1fatnassi" },
+    { name: "LinkedIn", icon: "/linkedin.svg", url: "https://linkedin.com/in/yourprofile" },
 ];
 
 const languages = [
@@ -71,10 +71,10 @@ export default function Contact() {
     };
 
     return (
-        <AnimatedSection className="py-24 md:py-32 px-4 sm:px-6 relative" delay={0.1}>
-            {/* Background decoration */}
+        <AnimatedSection className="py-24 md:py-32 px-4 sm:px-6 relative bg-[#FAFAFA]" delay={0.1}>
+            {/* Background decoration - Neutral */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-gradient-to-br from-indigo-500/15 to-purple-500/15 rounded-full blur-3xl" />
+                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-gray-200/30 rounded-full blur-3xl" />
             </div>
 
             <div id="contact" className="container mx-auto max-w-5xl relative z-10 scroll-mt-24">
@@ -84,11 +84,11 @@ export default function Contact() {
                     viewport={{ once: true }}
                     className="text-center mb-12 md:mb-16"
                 >
-                    <p className="text-indigo-400 text-sm uppercase tracking-widest mb-4">Get in touch</p>
-                    <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold">
+                    <p className="text-gray-500 text-sm uppercase tracking-widest mb-4">Get in touch</p>
+                    <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-black">
                         Let&apos;s <span className="gradient-text">Connect</span>
                     </h2>
-                    <p className="text-gray-400 mt-4 max-w-xl mx-auto">
+                    <p className="text-gray-600 mt-4 max-w-xl mx-auto">
                         Have a project in mind? Need an AI agent or website? Let&apos;s build something amazing together!
                     </p>
                 </motion.div>
@@ -101,16 +101,16 @@ export default function Contact() {
                     className="mb-12"
                 >
                     <div className="glass-card-strong p-6 md:p-8 text-center relative overflow-hidden">
-                        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-indigo-500/50 to-transparent" />
-                        <h3 className="text-xl md:text-2xl font-bold mb-2">
+                        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-gray-300 to-transparent" />
+                        <h3 className="text-xl md:text-2xl font-bold mb-2 text-black">
                             🚀 Build your AI agent or website?
                         </h3>
-                        <p className="text-gray-400 mb-4">Available for freelance projects and collaborations</p>
+                        <p className="text-gray-600 mb-4">Available for freelance projects and collaborations</p>
                         <motion.a
                             href="mailto:your.email@example.com"
                             whileHover={{ scale: 1.03 }}
                             whileTap={{ scale: 0.97 }}
-                            className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full font-semibold text-white shadow-lg"
+                            className="inline-flex items-center gap-2 px-6 py-3 bg-black rounded-full font-semibold text-white shadow-lg"
                         >
                             <EnvelopeIcon className="w-5 h-5" />
                             Let&apos;s Talk
@@ -130,51 +130,51 @@ export default function Contact() {
                             <form ref={formRef} onSubmit={handleSubmit} className="space-y-5">
                                 <div className="grid sm:grid-cols-2 gap-5">
                                     <div>
-                                        <label className="block text-sm font-medium text-gray-300 mb-2">Name</label>
+                                        <label className="block text-sm font-medium text-gray-700 mb-2">Name</label>
                                         <input
                                             type="text"
                                             name="name"
                                             value={formData.name}
                                             onChange={handleChange}
                                             required
-                                            className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:border-indigo-500 transition-colors text-white placeholder-gray-500"
+                                            className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:border-gray-400 transition-colors text-gray-800 placeholder-gray-400"
                                             placeholder="Your name"
                                         />
                                     </div>
                                     <div>
-                                        <label className="block text-sm font-medium text-gray-300 mb-2">Email</label>
+                                        <label className="block text-sm font-medium text-gray-700 mb-2">Email</label>
                                         <input
                                             type="email"
                                             name="email"
                                             value={formData.email}
                                             onChange={handleChange}
                                             required
-                                            className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:border-indigo-500 transition-colors text-white placeholder-gray-500"
+                                            className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:border-gray-400 transition-colors text-gray-800 placeholder-gray-400"
                                             placeholder="you@email.com"
                                         />
                                     </div>
                                 </div>
                                 <div>
-                                    <label className="block text-sm font-medium text-gray-300 mb-2">Subject</label>
+                                    <label className="block text-sm font-medium text-gray-700 mb-2">Subject</label>
                                     <input
                                         type="text"
                                         name="subject"
                                         value={formData.subject}
                                         onChange={handleChange}
                                         required
-                                        className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:border-indigo-500 transition-colors text-white placeholder-gray-500"
+                                        className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:border-gray-400 transition-colors text-gray-800 placeholder-gray-400"
                                         placeholder="Project inquiry"
                                     />
                                 </div>
                                 <div>
-                                    <label className="block text-sm font-medium text-gray-300 mb-2">Message</label>
+                                    <label className="block text-sm font-medium text-gray-700 mb-2">Message</label>
                                     <textarea
                                         name="message"
                                         value={formData.message}
                                         onChange={handleChange}
                                         required
                                         rows={4}
-                                        className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:border-indigo-500 transition-colors resize-none text-white placeholder-gray-500"
+                                        className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:border-gray-400 transition-colors resize-none text-gray-800 placeholder-gray-400"
                                         placeholder="Tell me about your project..."
                                     />
                                 </div>
@@ -184,10 +184,10 @@ export default function Contact() {
                                     whileHover={{ scale: status !== "sending" ? 1.02 : 1 }}
                                     whileTap={{ scale: status !== "sending" ? 0.98 : 1 }}
                                     className={`w-full py-4 rounded-xl font-semibold text-white shadow-lg flex items-center justify-center gap-2 transition-all ${status === "success"
-                                        ? "bg-green-500"
+                                        ? "bg-gray-600"
                                         : status === "error"
-                                            ? "bg-red-500"
-                                            : "bg-gradient-to-r from-indigo-500 to-purple-500 hover:shadow-xl"
+                                            ? "bg-gray-800"
+                                            : "bg-black hover:bg-gray-900 hover:shadow-xl"
                                         }`}
                                 >
                                     {status === "sending" && (
@@ -229,18 +229,18 @@ export default function Contact() {
                     >
                         {/* Location */}
                         <GlassCard className="flex items-center gap-4">
-                            <div className="p-3 bg-gradient-to-br from-red-500/20 to-rose-500/20 rounded-xl">
-                                <MapPinIcon className="w-6 h-6 text-red-400" />
+                            <div className="p-3 bg-gray-100 rounded-xl">
+                                <MapPinIcon className="w-6 h-6 text-gray-600" />
                             </div>
                             <div>
-                                <p className="text-gray-400 text-sm">Location</p>
-                                <p className="text-lg font-medium">Ksar Hellal, Tunisia 🇹🇳</p>
+                                <p className="text-gray-500 text-sm">Location</p>
+                                <p className="text-lg font-medium text-black">Ksar Hellal, Tunisia 🇹🇳</p>
                             </div>
                         </GlassCard>
 
                         {/* Social Links */}
                         <GlassCard>
-                            <h4 className="text-lg font-semibold mb-4">Connect with me</h4>
+                            <h4 className="text-lg font-semibold mb-4 text-black">Connect with me</h4>
                             <div className="flex gap-4">
                                 {socialLinks.map((social) => (
                                     <motion.a
@@ -250,7 +250,7 @@ export default function Contact() {
                                         rel="noopener noreferrer"
                                         whileHover={{ scale: 1.1, y: -3 }}
                                         whileTap={{ scale: 0.95 }}
-                                        className="flex-1 py-3 bg-white/5 border border-white/10 rounded-xl flex items-center justify-center gap-2 hover:bg-white/10 transition-colors"
+                                        className="flex-1 py-3 bg-gray-50 border border-gray-200 rounded-xl flex items-center justify-center gap-2 hover:bg-gray-100 transition-colors"
                                     >
                                         <div className="w-5 h-5 relative">
                                             <NextImage
@@ -259,9 +259,10 @@ export default function Contact() {
                                                 width={20}
                                                 height={20}
                                                 className="object-contain"
+                                                unoptimized
                                             />
                                         </div>
-                                        <span className="text-sm">{social.name}</span>
+                                        <span className="text-sm text-gray-800">{social.name}</span>
                                     </motion.a>
                                 ))}
                             </div>
@@ -269,15 +270,15 @@ export default function Contact() {
 
                         {/* Languages */}
                         <GlassCard>
-                            <h4 className="text-lg font-semibold mb-4">Languages</h4>
+                            <h4 className="text-lg font-semibold mb-4 text-black">Languages</h4>
                             <div className="flex flex-wrap gap-3">
                                 {languages.map((lang) => (
                                     <div
                                         key={lang.name}
-                                        className="flex items-center gap-2 px-3 py-2 bg-white/5 rounded-lg"
+                                        className="flex items-center gap-2 px-3 py-2 bg-gray-50 border border-gray-200 rounded-lg"
                                     >
                                         <span>{lang.flag}</span>
-                                        <span className="text-sm text-gray-300">{lang.name}</span>
+                                        <span className="text-sm text-gray-700">{lang.name}</span>
                                         <span className="text-xs text-gray-500">({lang.level})</span>
                                     </div>
                                 ))}
@@ -291,7 +292,7 @@ export default function Contact() {
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
                     viewport={{ once: true }}
-                    className="mt-20 pt-8 border-t border-white/10"
+                    className="mt-20 pt-8 border-t border-gray-200"
                 >
                     {/* Interests */}
                     <div className="text-center mb-8">
@@ -301,7 +302,7 @@ export default function Contact() {
                                 <motion.span
                                     key={interest.name}
                                     whileHover={{ scale: 1.05, y: -2 }}
-                                    className="px-3 py-1.5 bg-white/5 rounded-full text-sm text-gray-400 flex items-center gap-1.5 cursor-default"
+                                    className="px-3 py-1.5 bg-gray-50 border border-gray-200 rounded-full text-sm text-gray-600 flex items-center gap-1.5 cursor-default"
                                 >
                                     <span>{interest.icon}</span>
                                     {interest.name}
@@ -314,9 +315,9 @@ export default function Contact() {
                     <div className="text-center text-gray-500 text-sm">
                         <p>
                             © 2025 Built with ❤️ using{" "}
-                            <span className="text-indigo-400">Next.js</span>,{" "}
-                            <span className="text-cyan-400">Tailwind</span> &{" "}
-                            <span className="text-purple-400">Framer Motion</span>
+                            <span className="text-gray-700">Next.js</span>,{" "}
+                            <span className="text-gray-700">Tailwind</span> &{" "}
+                            <span className="text-gray-700">Framer Motion</span>
                         </p>
                     </div>
                 </motion.footer>

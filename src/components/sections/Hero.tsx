@@ -38,8 +38,8 @@ function useTypewriter(text: string, speed: number = 50, delay: number = 1000) {
 }
 
 const badges = [
-    { label: "� Public Speaker & Communicator", color: "from-sky-blue-light/20 to-cerulean/20", border: "border-sky-blue-light/30" },
-    { label: "💻 Web Dev Since 13", color: "from-cerulean/20 to-steel-blue/20", border: "border-cerulean/30" },
+    { label: "🎤 Public Speaker & Communicator", color: "bg-gray-100", border: "border-gray-200" },
+    { label: "💻 Web Dev Since 13", color: "bg-gray-100", border: "border-gray-200" },
 ];
 
 export default function Hero() {
@@ -47,18 +47,18 @@ export default function Hero() {
     const { displayText, isComplete } = useTypewriter(tagline, 40, 1200);
 
     return (
-        <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
-            {/* Floating orbs background */}
+        <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden bg-[#FAFAFA]">
+            {/* Floating orbs background - Neutral */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
                 <motion.div
-                    animate={{ y: [0, -30, 0], opacity: [0.15, 0.25, 0.15] }}
+                    animate={{ y: [0, -30, 0], opacity: [0.03, 0.06, 0.03] }}
                     transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-                    className="absolute top-20 right-10 md:right-20 w-48 md:w-72 h-48 md:h-72 bg-gradient-to-br from-cerulean/10 to-steel-blue/10 rounded-full blur-3xl"
+                    className="absolute top-20 right-10 md:right-20 w-48 md:w-72 h-48 md:h-72 bg-gray-300 rounded-full blur-3xl"
                 />
                 <motion.div
-                    animate={{ y: [0, 20, 0], opacity: [0.1, 0.2, 0.1] }}
+                    animate={{ y: [0, 20, 0], opacity: [0.02, 0.05, 0.02] }}
                     transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-                    className="absolute bottom-20 left-10 md:left-20 w-64 md:w-96 h-64 md:h-96 bg-gradient-to-br from-air-force-blue/15 to-sky-blue-light/15 rounded-full blur-3xl"
+                    className="absolute bottom-20 left-10 md:left-20 w-64 md:w-96 h-64 md:h-96 bg-gray-200 rounded-full blur-3xl"
                 />
             </div>
 
@@ -71,7 +71,7 @@ export default function Hero() {
                     className="glass-card-strong p-6 sm:p-10 md:p-14 max-w-3xl mx-auto text-center relative overflow-hidden"
                 >
                     {/* Subtle gradient accent */}
-                    <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-cerulean/50 to-transparent" />
+                    <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-gray-300 to-transparent" />
 
                     {/* Profile Picture */}
                     <motion.div
@@ -80,8 +80,8 @@ export default function Hero() {
                         transition={{ delay: 0.3, duration: 0.5, type: "spring" }}
                         className="mx-auto mb-6 sm:mb-8"
                     >
-                        <div className="w-24 h-24 sm:w-32 sm:h-32 rounded-full bg-gradient-to-br from-cerulean via-air-force-blue to-sky-blue-light p-1 mx-auto">
-                            <div className="w-full h-full rounded-full overflow-hidden bg-gray-900">
+                        <div className="w-24 h-24 sm:w-32 sm:h-32 rounded-full bg-gradient-to-br from-gray-200 via-gray-300 to-gray-400 p-1 mx-auto">
+                            <div className="w-full h-full rounded-full overflow-hidden bg-gray-100">
                                 <NextImage
                                     src="/profile.jpeg"
                                     alt="Profile Picture"
@@ -100,7 +100,7 @@ export default function Hero() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.5, duration: 0.5 }}
-                        className="text-3xl sm:text-5xl md:text-6xl font-bold mb-4 sm:mb-6"
+                        className="text-3xl sm:text-5xl md:text-6xl font-bold mb-4 sm:mb-6 text-black"
                     >
                         <span className="gradient-text">ZIED FATNASSI</span>
                     </motion.h1>
@@ -112,13 +112,13 @@ export default function Hero() {
                         transition={{ delay: 0.8 }}
                         className="min-h-[60px] sm:min-h-[48px] mb-6 sm:mb-8"
                     >
-                        <p className="text-base sm:text-lg md:text-xl text-gray-300 font-light">
+                        <p className="text-base sm:text-lg md:text-xl text-gray-600 font-light">
                             {displayText}
                             {!isComplete && (
                                 <motion.span
                                     animate={{ opacity: [1, 0] }}
                                     transition={{ duration: 0.5, repeat: Infinity }}
-                                    className="inline-block w-0.5 h-5 sm:h-6 bg-sky-blue-light ml-1 align-middle"
+                                    className="inline-block w-0.5 h-5 sm:h-6 bg-gray-400 ml-1 align-middle"
                                 />
                             )}
                         </p>
@@ -138,9 +138,9 @@ export default function Hero() {
                                 animate={{ opacity: 1, scale: 1 }}
                                 transition={{ delay: 1.7 + index * 0.15 }}
                                 whileHover={{ scale: 1.05, y: -2 }}
-                                className={`px-4 py-2 rounded-full bg-gradient-to-r ${badge.color} border ${badge.border} backdrop-blur-sm`}
+                                className={`px-4 py-2 rounded-full ${badge.color} border ${badge.border}`}
                             >
-                                <span className="text-sm sm:text-base text-white/90">{badge.label}</span>
+                                <span className="text-sm sm:text-base text-gray-700">{badge.label}</span>
                             </motion.div>
                         ))}
                     </motion.div>
@@ -156,7 +156,7 @@ export default function Hero() {
                             href="#projects"
                             whileHover={{ scale: 1.03 }}
                             whileTap={{ scale: 0.97 }}
-                            className="px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-cerulean to-air-force-blue rounded-full font-semibold text-white shadow-lg shadow-cerulean/25 hover:shadow-xl hover:shadow-cerulean/30 transition-all text-sm sm:text-base"
+                            className="px-6 sm:px-8 py-3 sm:py-4 bg-black rounded-full font-semibold text-white shadow-lg shadow-gray-300 hover:shadow-xl hover:bg-gray-900 transition-all text-sm sm:text-base"
                         >
                             View My Work
                         </motion.a>
@@ -164,7 +164,7 @@ export default function Hero() {
                             href="#contact"
                             whileHover={{ scale: 1.03 }}
                             whileTap={{ scale: 0.97 }}
-                            className="px-6 sm:px-8 py-3 sm:py-4 bg-white/5 border border-white/20 rounded-full font-semibold text-white hover:bg-white/10 transition-all text-sm sm:text-base"
+                            className="px-6 sm:px-8 py-3 sm:py-4 bg-white border border-gray-200 rounded-full font-semibold text-gray-800 hover:bg-gray-50 transition-all text-sm sm:text-base"
                         >
                             Get In Touch
                         </motion.a>
@@ -184,10 +184,10 @@ export default function Hero() {
                         transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
                         className="flex flex-col items-center gap-2"
                     >
-                        <span className="text-xs text-gray-500 uppercase tracking-widest group-hover:text-gray-300 transition-colors">
+                        <span className="text-xs text-gray-400 uppercase tracking-widest group-hover:text-gray-600 transition-colors">
                             Scroll
                         </span>
-                        <ChevronDownIcon className="w-5 h-5 text-gray-500 group-hover:text-cerulean transition-colors" />
+                        <ChevronDownIcon className="w-5 h-5 text-gray-400 group-hover:text-gray-600 transition-colors" />
                     </motion.div>
                 </motion.a>
             </div>
