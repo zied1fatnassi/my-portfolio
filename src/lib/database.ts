@@ -113,14 +113,11 @@ export async function getEducation() {
 // CONTACT MESSAGES
 // ============================================
 export async function submitContactMessage(message: NewContactMessage) {
-    const { data, error } = await supabase
+    const { error } = await supabase
         .from('contact_messages')
-        .insert(message)
-        .select()
-        .single();
+        .insert(message);
 
     if (error) throw error;
-    return data as ContactMessage;
 }
 
 // ============================================

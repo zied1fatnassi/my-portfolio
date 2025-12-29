@@ -22,6 +22,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
         setMounted(true);
         const savedTheme = localStorage.getItem("theme") as Theme;
         if (savedTheme) {
+            // eslint-disable-next-line
             setTheme(savedTheme);
         }
     }, []);
